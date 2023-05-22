@@ -19,8 +19,8 @@ public class Controllers {
         return service.getListCategory();
     }
 
-    @GetMapping("/list-company")
-    public ResponseAPI getListCategory(@PathVariable("id") String categoryID) {
+    @GetMapping("/{id}/list-company")
+    public ResponseAPI getListCompany(@PathVariable("id") String categoryID) {
         return service.getListCompany(categoryID);
     }
 }
