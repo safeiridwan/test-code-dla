@@ -1,4 +1,4 @@
-package com.project.dla.domain.entity;
+package com.project.dla.domains;
 
 import java.util.ArrayList;
 import java.util.List;

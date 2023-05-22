@@ -1,4 +1,4 @@
-package com.project.dla.domain.entity;
+package com.project.dla.domains;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
