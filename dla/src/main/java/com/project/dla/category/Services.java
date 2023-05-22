@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.project.dla.domains.Category;
+import com.project.dla.domains.CategoryItem;
 import com.project.dla.repositories.CategoryRepo;
 import com.project.dla.responses.ResponseAPI;
 
@@ -18,6 +19,17 @@ public class Services {
     public ResponseAPI getListCategory(){
         ResponseAPI res = new ResponseAPI();
         List<Category> list = repo.findAll();
+        
+        res.setCode(HttpStatus.OK.value());
+        res.setMessages("OK");
+        res.setResult(list);
+        res.setAdditionalEntity(null);
+        return res;
+    }
+
+    public ResponseAPI getListCompany(String categoryID){
+        ResponseAPI res = new ResponseAPI();
+        List<CategoryItem> list = repo.findAllCompany(categoryID);
         
         res.setCode(HttpStatus.OK.value());
         res.setMessages("OK");
