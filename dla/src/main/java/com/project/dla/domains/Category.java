@@ -1,29 +1,30 @@
 package com.project.dla.domains;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import java.io.Serializable;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-public class Category {
+@Table(name = "category")
+@AllArgsConstructor
+@NoArgsConstructor
+public class Category implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(columnDefinition = "category_id")
-    private Integer categoryID;
-    @Column(columnDefinition = "name", length = 64)
+    private long id;
+    @Column(name = "name")
     private String name;
-    @Column(columnDefinition = "image_url", length = 255)
+    @Column(name = "image_url")
     private String imageUrl;
 
-    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY, orphanRemoval = false)
-    private List<CategoryItem> listCategoryItem = new ArrayList<>();
+    // @OneToMany(cascade = CascadeType.ALL)
+    // List<CategoryItem> listCategoryItem = new ArrayList<>();
 }

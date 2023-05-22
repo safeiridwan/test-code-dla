@@ -1,30 +1,39 @@
 package com.project.dla.domains;
 
+import java.io.Serializable;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-public class CategoryItem {
+@Table(name = "category_item")
+@AllArgsConstructor
+@NoArgsConstructor
+public class CategoryItem implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(columnDefinition = "category_item_id")
-    private Integer categoryItemID;
-    @Column(columnDefinition = "name", length = 8)
+    private long id;
+    @Column(name = "name")
     private String name;
-    @Column(columnDefinition = "description", length = 64)
+    @Column(name = "description")
     private String description;
-    @Column(columnDefinition = "image_url", length = 255)
+    @Column(name = "image_url")
     private String imageUrl;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category.categoryID")
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "category_id")
     private Category category;
 }
