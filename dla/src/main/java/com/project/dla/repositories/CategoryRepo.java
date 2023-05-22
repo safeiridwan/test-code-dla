@@ -13,7 +13,10 @@ import com.project.dla.domains.CategoryItem;
 public interface CategoryRepo extends JpaRepository<Category, Long>{
 
     List<Category> findAll(); 
-    
+
     @Query(value = "SELECT * FROM categoryitem as ci INNER JOIN category AS c ON c.id = ci.category_id WHERE ci.category_id = ?1", nativeQuery = true)
     List<CategoryItem> findAllCompany(String categoryID);
+
+    @Query(value = "SELECT * FROM categoryitem as ci INNER JOIN category AS c ON c.id = ci.category_id WHERE ci.category_id = ?1 and ci.id = ?2", nativeQuery = true)
+    CategoryItem findDetailCompany(String categoryID, String companyID);
 }

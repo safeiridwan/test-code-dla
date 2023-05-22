@@ -37,4 +37,15 @@ public class Services {
         res.setAdditionalEntity(null);
         return res;
     }
+
+    public ResponseAPI getDetailCompany(String categoryID, String companyID){
+        ResponseAPI res = new ResponseAPI();
+        CategoryItem item = repo.findDetailCompany(categoryID, companyID);
+        
+        res.setCode(HttpStatus.OK.value());
+        res.setMessages("OK");
+        res.setResult(item);
+        res.setAdditionalEntity(null);
+        return res;
+    }
 }

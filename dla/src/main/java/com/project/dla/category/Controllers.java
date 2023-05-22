@@ -23,4 +23,9 @@ public class Controllers {
     public ResponseAPI getListCompany(@PathVariable("id") String categoryID) {
         return service.getListCompany(categoryID);
     }
+
+    @GetMapping("/{categoryID}/company/{companyID}")
+    public ResponseAPI getDetailCompany(@PathVariable("categoryID") String categoryID, @PathVariable("companyID") String companyID) {
+        return service.getDetailCompany(categoryID, companyID);
+    }
 }
